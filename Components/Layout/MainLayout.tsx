@@ -46,11 +46,14 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
   const sideList = () => (
     <div>
       <List>
+        <Link href="/">
+          <ListItem>Inicio</ListItem>
+        </Link>
         <Link href="/cinturones">
           <ListItem>Cinturones</ListItem>
         </Link>
         <Link href="/aritos">
-          <ListItem>Aritos</ListItem>
+          <ListItem>Aros</ListItem>
         </Link>
       </List>
     </div>

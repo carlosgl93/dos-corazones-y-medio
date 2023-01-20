@@ -3,7 +3,7 @@ import * as React from 'react';
 const Aritos = () => {
   return (
     <div>
-      <h1>Aritos!</h1>
+      <h1>Aros</h1>
     </div>
   );
 };
