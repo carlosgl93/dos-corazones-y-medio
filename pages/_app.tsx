@@ -1,8 +1,8 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-import UIStateProvider from '../state/ui/UIStateProvider';
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import UIStateProvider from "../state/ui/UIStateProvider";
 
-import MainLayout from '../Components/Layout/MainLayout';
+import MainLayout from "../components/Layout/MainLayout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
