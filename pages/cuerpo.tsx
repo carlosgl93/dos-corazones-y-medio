@@ -3,9 +3,9 @@ import * as React from "react";
 
 const Cuerpo = () => {
   return (
-    <Box>
+    <div>
       <Typography variant="h1">Cuerpo y rostro </Typography>
-    </Box>
+    </div>
   );
 };
 

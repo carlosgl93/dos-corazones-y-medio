@@ -13,13 +13,13 @@ import ProductsGrid from "../components/ProductsGrid";
 // Typescript
 const Home: FC = () => {
   return (
-    <Box>
+    <div>
       {/* most popular */}
       <PopularProducts products={dummyProducts} />
 
       {/* product grid */}
       <ProductsGrid products={dummyProducts} />
-    </Box>
+    </div>
   );
 };
 export default Home;

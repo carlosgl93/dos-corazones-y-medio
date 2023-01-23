@@ -3,9 +3,9 @@ import * as React from "react";
 
 const Shampoo = () => {
   return (
-    <Box>
+    <div>
       <Typography variant="h1">Shampoo solido</Typography>
-    </Box>
+    </div>
   );
 };
 

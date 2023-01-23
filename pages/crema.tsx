@@ -3,9 +3,9 @@ import { Box, Typography } from "@mui/material";
 
 const Crema = () => {
   return (
-    <Box>
+    <div>
       <Typography variant="h1">Cremas</Typography>
-    </Box>
+    </div>
   );
 };
 

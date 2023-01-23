@@ -3,9 +3,9 @@ import * as React from "react";
 
 const Sales = () => {
   return (
-    <Box>
+    <div>
       <Typography variant="h1">Sales de bano</Typography>
-    </Box>
+    </div>
   );
 };
 
