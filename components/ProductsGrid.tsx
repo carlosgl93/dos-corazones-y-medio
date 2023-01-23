@@ -10,7 +10,7 @@ import ProductCard from "./ProductCard";
 // Queries & Mutations
 
 // Typescript
-import { Product } from "../../interfaces/Product";
+import { Product } from "../interfaces/Product";
 
 interface Props {
   products: Product[];
