@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Button, CardActionArea, CardActions, useTheme } from "@mui/material";
 import { Product } from "../interfaces/Product";
 
 interface Props {
@@ -12,10 +12,12 @@ interface Props {
 
 const ProductCard: React.FC<Props> = ({ product }) => {
   const { images, name, price, description } = product;
+  const theme = useTheme();
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia component="img" height="140" image={images[0]} alt={name} />
+        <CardMedia component="img" height="auto" image={images[0]} alt={name} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {name}
@@ -28,9 +30,17 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           <Typography component="h5">{price}</Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+        }}
+      >
+        <Button variant="contained" size="small">
+          Detalles
+        </Button>
+        <Button variant="contained" size="small">
+          Comprar
         </Button>
       </CardActions>
     </Card>

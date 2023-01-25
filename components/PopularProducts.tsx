@@ -14,22 +14,33 @@ import { FC } from "react";
 
 // My components
 import ProductCard from "./ProductCard";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+import { Product } from "../interfaces/Product";
+import { Carousel } from "react-responsive-carousel";
 // Queries & Mutations
 
 // Typescript
-import { Product } from "../interfaces/Product";
 
 interface Props {
   products: Product[];
 }
 const PopularProducts: FC<Props> = ({ products }) => {
   return (
-    <Stack direction="row">
+    <Carousel
+      autoFocus
+      autoPlay
+      centerMode
+      infiniteLoop
+      emulateTouch
+      swipeable
+      showStatus
+      labels={{ leftArrow: "", rightArrow: "", item: "" }}
+    >
       {products.map((p) => {
         return <ProductCard key={p.name} product={p} />;
       })}
-    </Stack>
+    </Carousel>
   );
 };
 export default PopularProducts;

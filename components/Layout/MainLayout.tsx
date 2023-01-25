@@ -11,6 +11,7 @@ import {
   List,
   ListItem,
   Drawer,
+  Box,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import routes from "../../routes";
@@ -58,7 +59,13 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
 
   return (
     <div>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "#E6C647",
+          minHeight: "5vh",
+        }}
+      >
         <Toolbar>
           <IconButton
             edge="start"
@@ -69,15 +76,33 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit">
-            Doscorazonesymedio
+            Dos corazones y medio
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer open={state.left} onClose={toggleDrawer(false)}>
         {sideList()}
       </Drawer>
-      {children}
-      <BottomNavigation>
+      <Box
+        component="main"
+        sx={{
+          minHeight: "90vh",
+          maxWidth: "100vw",
+        }}
+      >
+        {children}
+      </Box>
+
+      <BottomNavigation
+        sx={{
+          display: "flex",
+          flex: 1,
+          backgroundColor: "#98C895",
+          justifyContent: "center",
+          minHeight: "5vh",
+          // alignContent: "center",
+        }}
+      >
         <Typography variant="h6" color="inherit">
           Rancagua, 2023
         </Typography>

@@ -4,7 +4,7 @@ import * as React from "react";
 const Shampoo = () => {
   return (
     <div>
-      <Typography variant="h1">Shampoo solido</Typography>
+      <Typography variant="h2">Shampoo solido</Typography>
     </div>
   );
 };
