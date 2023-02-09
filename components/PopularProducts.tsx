@@ -8,11 +8,11 @@ import { db } from "../firebase";
 import ProductCard from "./ProductCard";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import { Product } from "../interfaces/Product";
 import { Carousel } from "react-responsive-carousel";
 // Queries & Mutations
 
 // Typescript
+import { Product } from "../interfaces/Product";
 
 interface Props {
   products: Product[];
