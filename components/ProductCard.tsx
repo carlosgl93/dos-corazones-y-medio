@@ -5,12 +5,15 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions, useTheme } from "@mui/material";
 import { Product } from "../interfaces/Product";
+import { useRouter } from "next/router";
 
 interface Props {
   product: Product;
 }
 
 const ProductCard: React.FC<Props> = ({ product }) => {
+  const router = useRouter();
+
   const { images, name, price, description } = product;
   const theme = useTheme();
 
@@ -36,7 +39,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           justifyContent: "space-around",
         }}
       >
-        <Button variant="contained" size="small">
+        <Button variant="contained" size="small" onClick={() => {}}>
           Detalles
         </Button>
         <Button variant="contained" size="small">

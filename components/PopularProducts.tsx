@@ -1,14 +1,6 @@
 // React & dependencies
-import {
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Stack,
-} from "@mui/material";
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import { db } from "../firebase";
 
 // Material Components
 
@@ -35,7 +27,13 @@ const PopularProducts: FC<Props> = ({ products }) => {
       emulateTouch
       swipeable
       showStatus
-      labels={{ leftArrow: "", rightArrow: "", item: "" }}
+      stopOnHover
+      transitionTime={1366}
+      interval={5000}
+      showArrows
+      showThumbs={false}
+      showIndicators={false}
+      labels={{ leftArrow: "Prev", rightArrow: "Next", item: "" }}
     >
       {products.map((p) => {
         return <ProductCard key={p.name} product={p} />;

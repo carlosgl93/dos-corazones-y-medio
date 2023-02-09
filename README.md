@@ -1,3 +1,17 @@
-# dos-corazones-y-medio
+Nextjs with firebase
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/next-typescript-j75pj1)
+firebase project: leveraged-tech
+We are using auth and firestore from firebase.
+
+Vercel: Hosting and cloud functions (api folder)
+
+ENV VARIABLES:
+
+Get the firestore environment variables from leveraged-tech project.
+apiKey: "",
+authDomain: "leveraged-tech.firebaseapp.com",
+projectId: "leveraged-tech",
+storageBucket: "leveraged-tech.appspot.com",
+messagingSenderId: "",
+appId: "",
+measurementId: ""

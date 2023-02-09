@@ -49,7 +49,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
     <div>
       <List>
         {routes.map((r) => (
-          <ListItem>
+          <ListItem key={r.name}>
             <Link href={r.link}>{r.name}</Link>
           </ListItem>
         ))}

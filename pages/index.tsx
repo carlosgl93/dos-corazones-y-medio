@@ -1,12 +1,10 @@
 // React & dependencies
-import { FC } from "react";
-
+import { FC, useEffect } from "react";
 // Material Components
 import { Box } from "@mui/material";
 
 // My components
 import PopularProducts from "../components/PopularProducts";
-
 // Queries & Mutations
 import dummyProducts from "../dummyProducts";
 import ProductsGrid from "../components/ProductsGrid";
