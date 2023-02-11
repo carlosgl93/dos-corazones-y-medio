@@ -12,10 +12,7 @@ interface Props {
 }
 
 const ProductCard: React.FC<Props> = ({ product }) => {
-  const router = useRouter();
-
   const { images, name, price, description } = product;
-  const theme = useTheme();
 
   return (
     <Card sx={{ maxWidth: 345 }}>

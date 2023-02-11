@@ -6,6 +6,7 @@ import MainLayout from "../components/Layout/MainLayout";
 import Head from "next/head";
 
 import { ThemeProvider } from "@mui/material";
+import { AuthProvider } from "../context/AuthContext";
 import theme from "../styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -15,9 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>2 corazones y medio</title>
       </Head>
       <ThemeProvider theme={theme}>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
+        <AuthProvider>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+        </AuthProvider>
       </ThemeProvider>
     </>
   );

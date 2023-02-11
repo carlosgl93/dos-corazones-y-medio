@@ -1,10 +1,11 @@
 // React & dependencies
 import { FC, useEffect } from "react";
-import { db } from "../firebase";
-
+import { useRouter } from "next/router";
 // Material Components
 
 // My components
+import { db } from "../firebase";
+
 import ProductCard from "./ProductCard";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -13,11 +14,14 @@ import { Carousel } from "react-responsive-carousel";
 
 // Typescript
 import { Product } from "../interfaces/Product";
+import { Box } from "@mui/material";
 
 interface Props {
   products: Product[];
 }
 const PopularProducts: FC<Props> = ({ products }) => {
+  const router = useRouter();
+
   return (
     <Carousel
       autoFocus
@@ -34,9 +38,14 @@ const PopularProducts: FC<Props> = ({ products }) => {
       showThumbs={false}
       showIndicators={false}
       labels={{ leftArrow: "Prev", rightArrow: "Next", item: "" }}
+      onClickItem={() => {}}
     >
       {products.map((p) => {
-        return <ProductCard key={p.name} product={p} />;
+        return (
+          <Box key={p.name} onClick={() => router.push(`/products/${p.id}`)}>
+            <ProductCard product={p} />
+          </Box>
+        );
       })}
     </Carousel>
   );

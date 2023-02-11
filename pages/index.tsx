@@ -9,6 +9,7 @@ import PopularProducts from "../components/PopularProducts";
 import dummyProducts from "../dummyProducts";
 import ProductsGrid from "../components/ProductsGrid";
 import Typography from "@mui/material/Typography";
+import { useAuth } from "../context/AuthContext";
 // Typescript
 const Home: FC = () => {
   return (
