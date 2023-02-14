@@ -24,7 +24,7 @@ const theme = createTheme({
     MuiButton: {
       defaultProps: {
         variant: "contained",
-        color: "secondary",
+        color: "primary",
       },
       styleOverrides: {
         contained: true,

@@ -30,7 +30,6 @@ const PopularProducts: FC<Props> = ({ products }) => {
       infiniteLoop
       emulateTouch
       swipeable
-      showStatus
       stopOnHover
       transitionTime={1366}
       interval={5000}
@@ -38,7 +37,6 @@ const PopularProducts: FC<Props> = ({ products }) => {
       showThumbs={false}
       showIndicators={false}
       labels={{ leftArrow: "Prev", rightArrow: "Next", item: "" }}
-      onClickItem={() => {}}
     >
       {products.map((p) => {
         return (

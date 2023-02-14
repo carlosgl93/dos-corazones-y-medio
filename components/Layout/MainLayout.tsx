@@ -73,9 +73,9 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
             aria-label="menu"
             onClick={toggleDrawer(true)}
           >
-            <MenuIcon />
+            <MenuIcon style={{ color: "#A13217" }} />
           </IconButton>
-          <Typography variant="h6" color="inherit">
+          <Typography variant="h6" color="#A13217">
             Dos corazones y medio
           </Typography>
         </Toolbar>

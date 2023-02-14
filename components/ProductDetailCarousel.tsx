@@ -12,38 +12,38 @@ import { Carousel } from "react-responsive-carousel";
 // Queries & Mutations
 
 // Typescript
-import { Product } from "../interfaces/Product";
 interface Props {
-  product: Product;
+  images: string[];
 }
 
-const ProductDetailCarousel: FC<Props> = ({ product }) => {
+const ProductDetailCarousel: FC<Props> = ({ images }) => {
   const { innerWidth, innerHeight } = window;
 
   return (
-    product && (
+    images && (
       <>
         <Carousel
           autoFocus
+          autoPlay
           centerMode
+          infiniteLoop={images.length <= 2 ? false : true}
           emulateTouch
           swipeable
-          showStatus
           stopOnHover
+          transitionTime={1366}
+          interval={5000}
           showArrows
           showThumbs={false}
           showIndicators={false}
           labels={{ leftArrow: "Prev", rightArrow: "Next", item: "" }}
         >
-          {product.images.map((i) => {
+          {images.map((i) => {
             return (
-              <Box key={i}>
+              <Box key={i} style={{ margin: 1 }}>
                 <Image
                   src={i}
                   width={
-                    product.images.length <= 1
-                      ? innerWidth * 0.9
-                      : innerWidth * 0.6
+                    images.length <= 1 ? innerWidth * 0.9 : innerWidth * 0.6
                   }
                   height={innerHeight * 0.4}
                   alt="Product image"

@@ -15,7 +15,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   const { images, name, price, description } = product;
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, margin: 1 }}>
       <CardActionArea>
         <CardMedia component="img" height="auto" image={images[0]} alt={name} />
         <CardContent>
@@ -36,10 +36,15 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           justifyContent: "space-around",
         }}
       >
-        <Button variant="contained" size="small" onClick={() => {}}>
+        <Button
+          variant="contained"
+          size="small"
+          style={{ color: "#A13217" }}
+          onClick={() => {}}
+        >
           Detalles
         </Button>
-        <Button variant="contained" size="small">
+        <Button variant="contained" size="small" style={{ color: "#A13217" }}>
           Comprar
         </Button>
       </CardActions>
