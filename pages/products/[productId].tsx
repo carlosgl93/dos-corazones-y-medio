@@ -8,8 +8,8 @@ import ProductDetailCarousel from "../../components/ProductDetailCarousel";
 import dummyProducts from "../../dummyProducts";
 import { Product } from "../../interfaces/Product";
 import Image from "next/image";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import ProductPriceCTAs from "../../components/ProductPriceCTAs";
+import Reviews from "../../components/Reviews";
 
 type Props = {};
 
@@ -26,7 +26,7 @@ const ProductDetail = (props: Props) => {
   }, []);
 
   if (productDetails) {
-    const { name, price, images, description } = productDetails;
+    const { name, price, images, description, reviews } = productDetails;
 
     return (
       <Box>
@@ -36,78 +36,35 @@ const ProductDetail = (props: Props) => {
         <main>
           <Box>
             <ProductDetailCarousel images={images} />
-            <Box style={{ padding: 10 }}>
-              {/* PRODUCT DETAILS MAIN CONTAINER */}
-              <Box style={{ display: "flex", justifyContent: "space-around" }}>
-                {/* price plus CTA CART | BUY */}
-                <Box>
-                  <Typography variant="h4">${price}</Typography>
-                  <Typography
-                    variant="caption"
-                    style={{ color: "grey", opacity: 0.8, fontSize: "0.5rem" }}
-                  >
-                    Precio con impuestos incluido.
-                  </Typography>
-                </Box>
+            <ProductPriceCTAs price={price} />
+            <Box
+              style={{
+                marginTop: "1rem",
+              }}
+            >
+              <Typography variant="h4">{name}</Typography>
 
-                <Box
-                  display="flex"
-                  style={{
-                    maxWidth: "50%",
-                    justifyContent: "space-between",
-                    alignContent: "center",
-                  }}
-                >
-                  <Button
-                    style={{
-                      fontSize: "0.6rem",
-                      color: "#A13217",
-                      opacity: 0.9,
-                    }}
-                    endIcon={<ShoppingCartOutlinedIcon />}
-                  >
-                    Agregar al carrito
-                  </Button>
-                  <Button
-                    style={{
-                      fontSize: "0.6rem",
-                      marginLeft: "0.2rem",
-                      color: "#A13217",
-                      opacity: 0.9,
-                    }}
-                    endIcon={<FavoriteBorderOutlinedIcon />}
-                  >
-                    Comprar ahora
-                  </Button>
-                </Box>
-              </Box>
-              <Box
-                style={{
-                  marginTop: "1rem",
-                }}
-              >
-                <Typography variant="h4">{name}</Typography>
-
-                {description && (
-                  <Box>
-                    {/* PRODUCT DESCRIPTION */}
-                    <Typography variant="body1">{description}</Typography>
-                  </Box>
-                )}
+              {description && (
                 <Box>
-                  <Typography variant="h6">Envios</Typography>
-                  <Typography variant="caption">
-                    Enviamos a todo Chile!. Todos los envios son por pagar
-                  </Typography>
-                  <Box style={{ display: "flex", justifyContent: "center" }}>
-                    {/* COURRIER IMAGES */}
-                    <Image
-                      src="/courriers.png"
-                      height={120}
-                      width={165}
-                      alt="Starken o Chileexpress"
-                    />
-                  </Box>
+                  {/* PRODUCT DESCRIPTION */}
+                  <Typography variant="body1">{description}</Typography>
+                </Box>
+              )}
+
+              <Reviews reviews={reviews} />
+              <Box>
+                <Typography variant="h6">Envios</Typography>
+                <Typography variant="caption">
+                  Enviamos a todo Chile!. Todos los envios son por pagar
+                </Typography>
+                <Box style={{ display: "flex", justifyContent: "center" }}>
+                  {/* COURRIER IMAGES */}
+                  <Image
+                    src="/courriers.png"
+                    height={130}
+                    width={165}
+                    alt="Starken o Chileexpress"
+                  />
                 </Box>
               </Box>
             </Box>

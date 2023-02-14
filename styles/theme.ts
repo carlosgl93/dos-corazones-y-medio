@@ -21,6 +21,7 @@ const theme = createTheme({
         colorDefault: "#E6C647",
       },
     },
+
     MuiButton: {
       defaultProps: {
         variant: "contained",
@@ -28,6 +29,14 @@ const theme = createTheme({
       },
       styleOverrides: {
         contained: true,
+      },
+    },
+    MuiIcon: {
+      styleOverrides: {
+        colorPrimary: "#E6C647",
+        root: {
+          color: "#E6C647",
+        },
       },
     },
   },

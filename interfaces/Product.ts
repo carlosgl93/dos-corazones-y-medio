@@ -4,4 +4,9 @@ export interface Product {
   price: string;
   images: string[];
   description?: string;
+  reviews: {
+    average: number;
+    totalRatings: number;
+    totalSales: number;
+  };
 }
