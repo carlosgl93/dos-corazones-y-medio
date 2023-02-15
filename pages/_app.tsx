@@ -1,5 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import "../styles/Layout.css";
+
 // import UIStateProvider from "../state/ui/UIStateProvider";
 
 import MainLayout from "../components/Layout/MainLayout";

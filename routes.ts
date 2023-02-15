@@ -1,7 +1,6 @@
 import Route from "./interfaces/Route";
 
 const routes: Route[] = [
-  { name: "Inicio", link: "/" },
   {
     name: "Shampoo",
     link: "/shampoo",
@@ -11,7 +10,7 @@ const routes: Route[] = [
     link: "/crema",
   },
   {
-    name: "Sales de bano",
+    name: "Sales de baño",
     link: "/sales",
   },
   {
