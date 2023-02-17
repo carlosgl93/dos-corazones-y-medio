@@ -17,7 +17,6 @@ import { useRouter } from "next/router";
 
 interface Props {
   product: Product;
-  onClick: () => void;
 }
 
 const ProductCard: React.FC<Props> = ({ product }) => {

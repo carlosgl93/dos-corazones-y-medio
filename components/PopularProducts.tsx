@@ -38,16 +38,7 @@ const PopularProducts: FC<Props> = ({ products }) => {
       // renderArrowPrev={() => <NavigateBeforeIcon />}
     >
       {products.map((p) => {
-        return (
-          <ProductCard
-            product={p}
-            key={p.name}
-            onClick={() => {
-              console.log("abasdfasd");
-              return router.push(`/products/${p.id}`);
-            }}
-          />
-        );
+        return <ProductCard product={p} key={p.name} />;
       })}
     </Carousel>
   );

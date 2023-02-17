@@ -4,6 +4,7 @@ export interface Product {
   price: string;
   images: string[];
   description?: string;
+  category: "shampoo" | "crema" | "sal" | "cuerpo";
   reviews: {
     average: number;
     totalRatings: number;
