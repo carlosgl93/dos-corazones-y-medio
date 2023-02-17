@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import Loading from "../../components/Loading";
 import ProductDetailCarousel from "../../components/ProductDetailCarousel";
 import dummyProducts from "../../dummyProducts";
@@ -10,10 +10,12 @@ import { Product } from "../../interfaces/Product";
 import Image from "next/image";
 import ProductPriceCTAs from "../../components/ProductPriceCTAs";
 import Reviews from "../../components/Reviews";
+import { mobile } from "../../styles/breakpoints";
 
 type Props = {};
 
 const ProductDetail = (props: Props) => {
+  const mobileLayout = useMediaQuery(mobile);
   const router = useRouter();
   const [productDetails, setProductDetails] = useState<Product | undefined>(
     undefined
@@ -34,12 +36,17 @@ const ProductDetail = (props: Props) => {
           <title>{name}</title>
         </Head>
         <main>
-          <Box>
+          <Box
+            sx={{
+              paddingX: mobileLayout ? "0vw" : "20vw",
+            }}
+          >
             <ProductDetailCarousel images={images} />
             <ProductPriceCTAs price={price} />
             <Box
-              style={{
+              sx={{
                 marginTop: "1rem",
+                marginX: "2vw",
               }}
             >
               <Typography variant="h4">{name}</Typography>

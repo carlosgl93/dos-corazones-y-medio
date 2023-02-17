@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 import {
@@ -18,6 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import routes from "../../routes";
 import { mobile, tablet, desktop } from "../../styles/breakpoints";
+import { Router, useRouter } from "next/router";
 
 const styles = {
   root: {
@@ -30,6 +30,7 @@ interface Props {
 }
 
 const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
+  const router = useRouter();
   const mobileLayout = useMediaQuery(mobile);
 
   const [state, setState] = React.useState({
@@ -64,6 +65,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
       >
         {routes.map((r) => (
           <ListItem
+            onClick={() => router.push(r.link)}
             className="nav-link"
             key={r.name}
             sx={{
@@ -79,7 +81,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
   );
 
   return (
-    <div>
+    <Box>
       <AppBar
         position="static"
         sx={{
@@ -150,6 +152,8 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
         sx={{
           minHeight: "90vh",
           maxWidth: "100vw",
+          overflow: "hidden",
+          scrollbarWidth: "none",
         }}
       >
         {children}
@@ -159,17 +163,17 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
         sx={{
           display: "flex",
           flex: 1,
-          backgroundColor: "#98C895",
+          backgroundColor: "#E6C647",
           justifyContent: "center",
           minHeight: "5vh",
+          color: "#A13217",
+          alignItems: "center",
           // alignContent: "center",
         }}
       >
-        <Typography variant="h6" color="inherit">
-          Rancagua, 2023
-        </Typography>
+        <Typography variant="h6">Rancagua, 2023</Typography>
       </BottomNavigation>
-    </div>
+    </Box>
   );
 };
 

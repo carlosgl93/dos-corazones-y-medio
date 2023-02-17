@@ -1,5 +1,6 @@
 // React & dependencies
 import { FC } from "react";
+import { useRouter } from "next/router";
 
 // Material Components
 import { Box, Typography, Button } from "@mui/material";
@@ -15,6 +16,7 @@ interface Props {
   price: string;
 }
 const ProductPriceCTAs: FC<Props> = ({ price }) => {
+  const router = useRouter();
   return (
     <Box style={{ padding: 10 }}>
       {/* PRODUCT DETAILS MAIN CONTAINER */}
@@ -45,6 +47,7 @@ const ProductPriceCTAs: FC<Props> = ({ price }) => {
               opacity: 0.9,
             }}
             endIcon={<ShoppingCartOutlinedIcon />}
+            onClick={() => {}}
           >
             Agregar
           </Button>
@@ -56,6 +59,7 @@ const ProductPriceCTAs: FC<Props> = ({ price }) => {
               opacity: 0.9,
             }}
             endIcon={<FavoriteBorderOutlinedIcon />}
+            onClick={() => router.push("/checkout")}
           >
             Comprar
           </Button>

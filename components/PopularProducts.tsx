@@ -2,7 +2,8 @@
 import { FC, useEffect } from "react";
 import { useRouter } from "next/router";
 // Material Components
-
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 // My components
 import { db } from "../firebase";
 
@@ -25,24 +26,27 @@ const PopularProducts: FC<Props> = ({ products }) => {
   return (
     <Carousel
       autoFocus
-      autoPlay
-      centerMode
-      infiniteLoop
       emulateTouch
       swipeable
       stopOnHover
       transitionTime={1366}
       interval={5000}
       showArrows
-      showThumbs={false}
-      showIndicators={false}
-      labels={{ leftArrow: "Prev", rightArrow: "Next", item: "" }}
+      showIndicators
+      showStatus={false}
+      // renderArrowNext={() => <NavigateNextIcon />}
+      // renderArrowPrev={() => <NavigateBeforeIcon />}
     >
       {products.map((p) => {
         return (
-          <Box key={p.name} onClick={() => router.push(`/products/${p.id}`)}>
-            <ProductCard product={p} />
-          </Box>
+          <ProductCard
+            product={p}
+            key={p.name}
+            onClick={() => {
+              console.log("abasdfasd");
+              return router.push(`/products/${p.id}`);
+            }}
+          />
         );
       })}
     </Carousel>

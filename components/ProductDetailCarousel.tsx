@@ -1,9 +1,10 @@
 // React & dependencies
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import router from "next/router";
 import { FC } from "react";
 import { Carousel } from "react-responsive-carousel";
+import { mobile } from "../styles/breakpoints";
 
 // Material Components
 
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const ProductDetailCarousel: FC<Props> = ({ images }) => {
+  const mobileLayout = useMediaQuery(mobile);
   const { innerWidth, innerHeight } = window;
 
   return (
@@ -33,19 +35,21 @@ const ProductDetailCarousel: FC<Props> = ({ images }) => {
           transitionTime={1366}
           interval={5000}
           showArrows
+          showStatus={false}
           showThumbs={false}
           showIndicators={false}
           labels={{ leftArrow: "Prev", rightArrow: "Next", item: "" }}
         >
           {images.map((i) => {
             return (
-              <Box key={i} style={{ margin: 1 }}>
+              <Box
+                key={i}
+                sx={{ margin: 1, marginX: mobileLayout ? "1vw" : "5vw" }}
+              >
                 <Image
                   src={i}
-                  width={
-                    images.length <= 1 ? innerWidth * 0.9 : innerWidth * 0.6
-                  }
-                  height={innerHeight * 0.4}
+                  width={innerWidth * 0.6}
+                  height={mobileLayout ? innerHeight * 0.4 : innerHeight * 0.6}
                   alt="Product image"
                 />
               </Box>
