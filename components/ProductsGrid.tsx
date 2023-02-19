@@ -80,7 +80,7 @@ const ProductsGrid: FC<Props> = ({ products }) => {
           {/* shampoo */}
           <Stack
             direction={{ xs: "column", md: "row" }}
-            spacing={{ xs: 0, md: 2 }}
+            spacing={{ xs: 0, md: 1 }}
           >
             {shampoo.map((shampooProduct) => (
               <ProductCard key={shampooProduct.id} product={shampooProduct} />
@@ -110,11 +110,7 @@ const ProductsGrid: FC<Props> = ({ products }) => {
           </Box>
 
           {/* cremas */}
-          <Stack
-            direction={{ xs: "column", md: "row" }}
-            spacing={2}
-            divider={<Divider orientation="vertical" flexItem />}
-          >
+          <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
             {crema.map((cremaProduct) => (
               <ProductCard key={cremaProduct.id} product={cremaProduct} />
             ))}

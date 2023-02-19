@@ -1,21 +1,21 @@
 // React & dependencies
 import { FC, useEffect } from "react";
 import { useRouter } from "next/router";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+
 // Material Components
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import { Box } from "@mui/material";
+
 // My components
 import { db } from "../firebase";
 
 import ProductCard from "./ProductCard";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import { Carousel } from "react-responsive-carousel";
 // Queries & Mutations
 
 // Typescript
 import { Product } from "../interfaces/Product";
-import { Box } from "@mui/material";
 
 interface Props {
   products: Product[];
@@ -29,11 +29,10 @@ const PopularProducts: FC<Props> = ({ products }) => {
       emulateTouch
       swipeable
       stopOnHover
-      transitionTime={1366}
-      interval={5000}
-      showArrows
-      showIndicators
+      transitionTime={1500}
+      interval={3000}
       showStatus={false}
+      autoPlay
       // renderArrowNext={() => <NavigateNextIcon />}
       // renderArrowPrev={() => <NavigateBeforeIcon />}
     >

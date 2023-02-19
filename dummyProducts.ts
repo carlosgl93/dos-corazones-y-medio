@@ -12,6 +12,7 @@ const dummyProducts: Product[] = [
       totalRatings: 22,
       totalSales: 45,
     },
+    stock: 0,
   },
   {
     id: "5",
@@ -25,6 +26,7 @@ const dummyProducts: Product[] = [
       totalRatings: 22,
       totalSales: 45,
     },
+    stock: 3,
   },
   {
     id: "2",
@@ -37,6 +39,7 @@ const dummyProducts: Product[] = [
       totalRatings: 3,
       totalSales: 10,
     },
+    stock: 3,
   },
   {
     id: "55",
@@ -49,6 +52,7 @@ const dummyProducts: Product[] = [
       totalRatings: 3,
       totalSales: 10,
     },
+    stock: 3,
   },
   {
     id: "3",
@@ -61,6 +65,7 @@ const dummyProducts: Product[] = [
       totalRatings: 10,
       totalSales: 24,
     },
+    stock: 3,
   },
   {
     id: "11",
@@ -73,6 +78,7 @@ const dummyProducts: Product[] = [
       totalRatings: 10,
       totalSales: 24,
     },
+    stock: 3,
   },
 
   {
@@ -86,6 +92,7 @@ const dummyProducts: Product[] = [
       totalRatings: 10,
       totalSales: 24,
     },
+    stock: 3,
   },
   {
     id: "15",
@@ -98,6 +105,7 @@ const dummyProducts: Product[] = [
       totalRatings: 10,
       totalSales: 24,
     },
+    stock: 3,
   },
 ];
 

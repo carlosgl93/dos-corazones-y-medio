@@ -15,11 +15,12 @@ import { mobile } from "../../styles/breakpoints";
 type Props = {};
 
 const ProductDetail = (props: Props) => {
-  const mobileLayout = useMediaQuery(mobile);
-  const router = useRouter();
   const [productDetails, setProductDetails] = useState<Product | undefined>(
     undefined
   );
+
+  const mobileLayout = useMediaQuery(mobile);
+  const router = useRouter();
 
   const { productId } = router.query;
 
@@ -28,7 +29,7 @@ const ProductDetail = (props: Props) => {
   }, []);
 
   if (productDetails) {
-    const { name, price, images, description, reviews } = productDetails;
+    const { name, price, images, description, reviews, stock } = productDetails;
 
     return (
       <Box>
@@ -42,7 +43,7 @@ const ProductDetail = (props: Props) => {
             }}
           >
             <ProductDetailCarousel images={images} />
-            <ProductPriceCTAs price={price} />
+            <ProductPriceCTAs product={productDetails} />
             <Box
               sx={{
                 marginTop: "1rem",

@@ -10,4 +10,5 @@ export interface Product {
     totalRatings: number;
     totalSales: number;
   };
+  stock: number;
 }

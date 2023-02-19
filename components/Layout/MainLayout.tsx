@@ -1,5 +1,5 @@
 import * as React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import {
   AppBar,
@@ -12,12 +12,18 @@ import {
   Drawer,
   Box,
   useMediaQuery,
+  useTheme,
+  Badge,
+  Link,
+  Button,
 } from "@mui/material";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import routes from "../../routes";
 import { mobile, tablet, desktop } from "../../styles/breakpoints";
 import { Router, useRouter } from "next/router";
+import { CartContext } from "../../context";
 
 const styles = {
   root: {
@@ -30,12 +36,17 @@ interface Props {
 }
 
 const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
-  const router = useRouter();
-  const mobileLayout = useMediaQuery(mobile);
-
   const [state, setState] = React.useState({
     left: false,
   });
+  const { cart } = React.useContext(CartContext);
+  console.log({ cart });
+
+  const theme = useTheme();
+  const router = useRouter();
+  const mobileLayout = useMediaQuery(mobile);
+
+  const { main, contrastText } = theme.palette.primary;
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -52,15 +63,14 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
   const sideList = () => (
     <Box
       sx={{
-        backgroundColor: "#E6C647",
+        backgroundColor: main,
         height: mobileLayout ? "100vh" : "auto",
       }}
     >
       <List
         sx={{
           display: mobileLayout ? "block" : "flex",
-          flexGrow: 1,
-          justifyContent: "space-around",
+          justifyContent: "space-evenly",
         }}
       >
         {routes.map((r) => (
@@ -69,11 +79,30 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
             className="nav-link"
             key={r.name}
             sx={{
-              minWidth: mobileLayout ? "100%" : "15vw",
-              color: "#A13217",
+              // mobileLayout ? minWidth: '10'
+              // minWidth: mobileLayout ? "100%" : "10vw",
+              color: contrastText,
             }}
+            color="secondary"
           >
-            <Link href={r.link}>{r.name}</Link>
+            <NextLink href={r.link} passHref>
+              <Button
+                sx={{
+                  backgroundColor: contrastText,
+                  color: main,
+                  fontSize: "0.7rem",
+                  ":hover": {
+                    bgcolor: theme.palette.secondary.main,
+                    color: contrastText,
+                  },
+                }}
+              >
+                {r.name}
+              </Button>
+              {/* <Link underline="hover" sx={{ color: contrastText }}>
+                {r.name}
+              </Link> */}
+            </NextLink>
           </ListItem>
         ))}
       </List>
@@ -85,44 +114,60 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#E6C647",
+          backgroundColor: main,
           minHeight: "5vh",
         }}
       >
         {mobileLayout ? (
           // mobile
           <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
-            >
-              <MenuIcon style={{ color: "#A13217" }} />
-            </IconButton>
-            <Typography variant="h6" color="#A13217">
-              Dos corazones y medio
-            </Typography>
+            <Box>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={toggleDrawer(true)}
+              >
+                <MenuIcon style={{ color: contrastText }} />
+              </IconButton>
+            </Box>
+            <Box sx={{ display: "flex", flex: 1, justifyContent: "center" }}>
+              <NextLink href="/" passHref>
+                <Typography variant="h6" color={contrastText}>
+                  Dos corazones y medio
+                </Typography>
+              </NextLink>
+            </Box>
+
+            <Box>
+              <NextLink href="/cart" passHref>
+                <IconButton sx={{ color: contrastText }}>
+                  <Badge badgeContent={cart.length} color="secondary" sx={{}}>
+                    <ShoppingCartOutlinedIcon />
+                  </Badge>
+                </IconButton>
+              </NextLink>
+            </Box>
           </Toolbar>
         ) : (
-          // desktop
+          // DESKTOP
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-evenly",
             }}
           >
             <Box
               className="nav-link"
               sx={{
                 padding: "0vh 2.5vw",
+                flex: 1,
               }}
             >
-              <Link
+              <NextLink
                 href="/"
                 style={{
-                  color: "#A13217",
+                  color: contrastText,
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -131,15 +176,38 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
                 <IconButton>
                   <HomeIcon
                     sx={{
-                      color: "#A13217",
+                      color: contrastText,
                     }}
                   />
                 </IconButton>
                 <Typography variant="h6">2 Corazones y Medio</Typography>
-              </Link>
+              </NextLink>
             </Box>
-            <Box style={{ display: "flex", justifyContent: "space-evenly" }}>
-              {sideList()}
+            <Box style={{ display: "flex" }}>{sideList()}</Box>
+            <Box
+              sx={{
+                flex: 1,
+                justifyContent: "end",
+                color: main,
+              }}
+            >
+              <ListItem
+                sx={{
+                  justifyContent: "end",
+                  ":hover": {
+                    bgColor: theme.palette.secondary.main,
+                    color: contrastText,
+                  },
+                }}
+              >
+                <NextLink href="/cart" passHref>
+                  <IconButton sx={{ color: contrastText }}>
+                    <Badge badgeContent={cart.length} color="secondary" sx={{}}>
+                      <ShoppingCartOutlinedIcon />
+                    </Badge>
+                  </IconButton>
+                </NextLink>
+              </ListItem>
             </Box>
           </Box>
         )}
@@ -163,10 +231,10 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
         sx={{
           display: "flex",
           flex: 1,
-          backgroundColor: "#E6C647",
+          backgroundColor: main,
           justifyContent: "center",
           minHeight: "5vh",
-          color: "#A13217",
+          color: contrastText,
           alignItems: "center",
           // alignContent: "center",
         }}

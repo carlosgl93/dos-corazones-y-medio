@@ -1,22 +1,33 @@
 // React & dependencies
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useRouter } from "next/router";
 
 // Material Components
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Chip } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Product } from "../interfaces/Product";
 
 // My components
+import { CartContext } from "../context/cart/CartContext";
 
 // Queries & Mutations
 
 // Typescript
 interface Props {
-  price: string;
+  product: Product;
 }
-const ProductPriceCTAs: FC<Props> = ({ price }) => {
+const ProductPriceCTAs: FC<Props> = ({ product }) => {
+  const { price, stock } = product;
+  const { addProductToCart } = useContext(CartContext);
+
   const router = useRouter();
+
+  const onAddToCart = () => {
+    console.log("added to cart");
+    addProductToCart(product);
+  };
+
   return (
     <Box style={{ padding: 10 }}>
       {/* PRODUCT DETAILS MAIN CONTAINER */}
@@ -40,29 +51,37 @@ const ProductPriceCTAs: FC<Props> = ({ price }) => {
             alignContent: "center",
           }}
         >
-          <Button
-            style={{
-              fontSize: "0.6rem",
-              color: "#A13217",
-              opacity: 0.9,
-            }}
-            endIcon={<ShoppingCartOutlinedIcon />}
-            onClick={() => {}}
-          >
-            Agregar
-          </Button>
-          <Button
-            style={{
-              fontSize: "0.6rem",
-              marginLeft: "0.2rem",
-              color: "#A13217",
-              opacity: 0.9,
-            }}
-            endIcon={<FavoriteBorderOutlinedIcon />}
-            onClick={() => router.push("/checkout")}
-          >
-            Comprar
-          </Button>
+          {stock === 0 ? (
+            <Button disabled color="secondary">
+              No hay stock disponible
+            </Button>
+          ) : (
+            <>
+              <Button
+                style={{
+                  fontSize: "0.6rem",
+                  color: "#A13217",
+                  opacity: 0.9,
+                }}
+                endIcon={<ShoppingCartOutlinedIcon />}
+                onClick={onAddToCart}
+              >
+                Agregar
+              </Button>
+              <Button
+                style={{
+                  fontSize: "0.6rem",
+                  marginLeft: "0.2rem",
+                  color: "#A13217",
+                  opacity: 0.9,
+                }}
+                endIcon={<FavoriteBorderOutlinedIcon />}
+                onClick={() => router.push("/checkout")}
+              >
+                Comprar
+              </Button>
+            </>
+          )}
         </Box>
       </Box>
     </Box>

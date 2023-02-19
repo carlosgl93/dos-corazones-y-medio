@@ -10,6 +10,7 @@ import Head from "next/head";
 import { ThemeProvider } from "@mui/material";
 import { AuthProvider } from "../context/AuthContext";
 import theme from "../styles/theme";
+import CartProvider from "../context/cart/CartProvider";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -17,13 +18,15 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>2 corazones y medio</title>
       </Head>
-      <ThemeProvider theme={theme}>
-        <AuthProvider>
-          <MainLayout>
-            <Component {...pageProps} />
-          </MainLayout>
-        </AuthProvider>
-      </ThemeProvider>
+      <CartProvider>
+        <ThemeProvider theme={theme}>
+          <AuthProvider>
+            <MainLayout>
+              <Component {...pageProps} />
+            </MainLayout>
+          </AuthProvider>
+        </ThemeProvider>
+      </CartProvider>
     </>
   );
 }

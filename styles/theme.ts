@@ -6,10 +6,10 @@ const theme = createTheme({
       fontFamily: "Montserrat",
     },
   },
-
   palette: {
     primary: {
       main: "#E6C647",
+      contrastText: "#A13217",
     },
     secondary: {
       main: "#3C909D",
