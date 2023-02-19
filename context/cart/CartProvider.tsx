@@ -15,7 +15,7 @@ const CART_INITIAL_STATE: CartState = {
 const CartProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE);
 
-  const addProductToCart = (product: Product) => {
+  const addProductToCart = (product: CartProduct) => {
     const productInCartAlready = state.cart.some((p) => p.id === product.id);
     if (!productInCartAlready)
       dispatch({ type: "Add to cart", payload: product });

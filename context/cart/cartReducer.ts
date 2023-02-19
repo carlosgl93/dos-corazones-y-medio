@@ -1,10 +1,11 @@
 import { CartState } from "./";
 import { Product } from "../../interfaces/Product";
+import CartProduct from "../../interfaces/Cart";
 
 type CartActionType =
   | {
       type: "Add to cart";
-      payload: Product;
+      payload: CartProduct;
     }
   | {
       type: "Load cart from cookies | storage";

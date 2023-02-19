@@ -2,7 +2,7 @@ export default interface CartProduct {
   id: string;
   name: string;
   price: string;
-  images: string;
+  image: string;
   category: "shampoo" | "crema" | "sal" | "cuerpo";
   quantity: number;
 }
