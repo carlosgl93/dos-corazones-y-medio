@@ -5,7 +5,7 @@ import Cookie from "js-cookie";
 import { Product } from "../../interfaces/Product";
 
 export interface CartState {
-  cart: Product[];
+  cart: CartProduct[];
 }
 
 const CART_INITIAL_STATE: CartState = {

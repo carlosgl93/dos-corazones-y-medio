@@ -45,6 +45,7 @@ const ProductPriceCTAs: FC<Props> = ({ product }) => {
       image: product.images[0],
       category: product.category,
       quantity: itemQuantity,
+      stock: product.stock,
     };
 
     addProductToCart(productToCart);

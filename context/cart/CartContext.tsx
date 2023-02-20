@@ -3,7 +3,7 @@ import CartProduct from "../../interfaces/Cart";
 import { Product } from "../../interfaces/Product";
 
 interface ContextProps {
-  cart: Product[];
+  cart: CartProduct[];
 
   //   methods
   addProductToCart: (product: CartProduct) => void;

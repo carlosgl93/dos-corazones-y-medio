@@ -5,4 +5,5 @@ export default interface CartProduct {
   image: string;
   category: "shampoo" | "crema" | "sal" | "cuerpo";
   quantity: number;
+  stock: number;
 }
