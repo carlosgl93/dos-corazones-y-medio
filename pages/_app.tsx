@@ -21,9 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <CartProvider>
         <ThemeProvider theme={theme}>
           <AuthProvider>
-            <MainLayout>
-              <Component {...pageProps} />
-            </MainLayout>
+            <Component {...pageProps} />
           </AuthProvider>
         </ThemeProvider>
       </CartProvider>

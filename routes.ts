@@ -1,6 +1,6 @@
 import Route from "./interfaces/Route";
 
-const routes: Route[] = [
+export const userRoutes: Route[] = [
   {
     name: "Shampoo",
     link: "/shampoo",
@@ -19,4 +19,21 @@ const routes: Route[] = [
   },
 ];
 
-export default routes;
+export const adminRoutes: Route[] = [
+  {
+    name: "Shampoo",
+    link: "/admin/shampoo",
+  },
+  {
+    name: "Crema",
+    link: "/admin/crema",
+  },
+  {
+    name: "Sales de baño",
+    link: "/admin/sales",
+  },
+  {
+    name: "Cuerpo y rostro",
+    link: "/admin/cuerpo",
+  },
+];

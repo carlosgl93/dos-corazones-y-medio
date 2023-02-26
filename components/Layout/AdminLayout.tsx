@@ -16,14 +16,14 @@ import {
   Badge,
   Link,
   Button,
+  Avatar,
 } from "@mui/material";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
-import { userRoutes } from "../../routes";
+import { adminRoutes } from "../../routes";
 import { mobile, tablet, desktop } from "../../styles/breakpoints";
 import { Router, useRouter } from "next/router";
-import { CartContext } from "../../context";
 
 const styles = {
   root: {
@@ -35,12 +35,10 @@ interface Props {
   children: React.ReactNode;
 }
 
-const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
+const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
   const [state, setState] = React.useState({
     left: false,
   });
-  const { cart } = React.useContext(CartContext);
-  console.log({ cart });
 
   const theme = useTheme();
   const router = useRouter();
@@ -73,7 +71,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
           justifyContent: "space-evenly",
         }}
       >
-        {userRoutes.map((r) => (
+        {adminRoutes.map((r) => (
           <ListItem
             onClick={() => router.push(r.link)}
             className="nav-link"
@@ -132,21 +130,17 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
               </IconButton>
             </Box>
             <Box sx={{ display: "flex", flex: 1, justifyContent: "center" }}>
-              <NextLink href="/" passHref>
+              <NextLink href="/admin" passHref>
                 <Typography variant="h6" color={contrastText}>
-                  Dos corazones y medio
+                  Administración
                 </Typography>
               </NextLink>
             </Box>
 
             <Box>
-              <NextLink href="/cart" passHref>
-                <IconButton sx={{ color: contrastText }}>
-                  <Badge badgeContent={cart.length} color="secondary" sx={{}}>
-                    <ShoppingCartOutlinedIcon />
-                  </Badge>
-                </IconButton>
-              </NextLink>
+              <IconButton sx={{ color: contrastText }}>
+                <AddCircleOutlineIcon />
+              </IconButton>
             </Box>
           </Toolbar>
         ) : (
@@ -165,7 +159,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
               }}
             >
               <NextLink
-                href="/"
+                href="/admin"
                 style={{
                   color: contrastText,
                   display: "flex",
@@ -180,7 +174,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
                     }}
                   />
                 </IconButton>
-                <Typography variant="h6">2 Corazones y Medio</Typography>
+                <Typography variant="h6">Administración</Typography>
               </NextLink>
             </Box>
             <Box style={{ display: "flex" }}>{sideList()}</Box>
@@ -200,13 +194,19 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
                   },
                 }}
               >
-                <NextLink href="/cart" passHref>
-                  <IconButton sx={{ color: contrastText }}>
-                    <Badge badgeContent={cart.length} color="secondary" sx={{}}>
-                      <ShoppingCartOutlinedIcon />
-                    </Badge>
-                  </IconButton>
-                </NextLink>
+                <Button
+                  sx={{
+                    color: contrastText,
+                    ":hover": {
+                      bgColor: contrastText,
+                      color: main,
+                    },
+                  }}
+                  onClick={() => router.push("/products/add")}
+                  endIcon={<AddCircleOutlineIcon />}
+                >
+                  <Typography>Agregar producto</Typography>
+                </Button>
               </ListItem>
             </Box>
           </Box>
@@ -245,4 +245,4 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
   );
 };
 
-export default MainLayout;
+export default AdminLayout;
