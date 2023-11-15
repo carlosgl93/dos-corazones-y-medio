@@ -3,29 +3,44 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
   typography: {
     allVariants: {
-      fontFamily: "Montserrat",
+      fontFamily: 'Montserrat',
     },
   },
   palette: {
+    paper: {
+      main: '#E0F2F1',
+    },
     primary: {
-      main: "#E6C647",
-      contrastText: "#A13217",
+      main: '#26A69A',
+      text: '#2B4162',
+      title: '#C49799',
+      contrastText: '#FFB140',
     },
     secondary: {
-      main: "#3C909D",
+      main: '#3C909D',
+    },
+    accent: {
+      main: '#80CBC4',
     },
   },
   components: {
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: '#C49799',
+        },
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
-        colorDefault: "#E6C647",
+        colorDefault: '#E6C647',
       },
     },
 
     MuiButton: {
       defaultProps: {
-        variant: "contained",
-        color: "primary",
+        variant: 'contained',
+        color: 'primary',
       },
       styleOverrides: {
         contained: true,
@@ -33,9 +48,9 @@ const theme = createTheme({
     },
     MuiIcon: {
       styleOverrides: {
-        colorPrimary: "#E6C647",
+        colorPrimary: '#E6C647',
         root: {
-          color: "#E6C647",
+          color: '#E6C647',
         },
       },
     },

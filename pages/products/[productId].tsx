@@ -11,6 +11,7 @@ import Image from "next/image";
 import ProductPriceCTAs from "../../components/ProductPriceCTAs";
 import Reviews from "../../components/Reviews";
 import { mobile } from "../../styles/breakpoints";
+import MainLayout from '../../components/Layout/MainLayout';
 
 type Props = {};
 
@@ -36,48 +37,48 @@ const ProductDetail = (props: Props) => {
         <Head>
           <title>{name}</title>
         </Head>
-        <main>
+        <MainLayout>
           <Box
             sx={{
-              paddingX: mobileLayout ? "0vw" : "20vw",
+              paddingX: mobileLayout ? '0vw' : '20vw',
             }}
           >
             <ProductDetailCarousel images={images} />
             <ProductPriceCTAs product={productDetails} />
             <Box
               sx={{
-                marginTop: "1rem",
-                marginX: "2vw",
+                marginTop: '1rem',
+                marginX: '2vw',
               }}
             >
-              <Typography variant="h4">{name}</Typography>
+              <Typography variant='h4'>{name}</Typography>
 
               {description && (
                 <Box>
                   {/* PRODUCT DESCRIPTION */}
-                  <Typography variant="body1">{description}</Typography>
+                  <Typography variant='body1'>{description}</Typography>
                 </Box>
               )}
 
               <Reviews reviews={reviews} />
               <Box>
-                <Typography variant="h6">Envios</Typography>
-                <Typography variant="caption">
+                <Typography variant='h6'>Envios</Typography>
+                <Typography variant='caption'>
                   Enviamos a todo Chile!. Todos los envios son por pagar
                 </Typography>
-                <Box style={{ display: "flex", justifyContent: "center" }}>
+                <Box style={{ display: 'flex', justifyContent: 'center' }}>
                   {/* COURRIER IMAGES */}
                   <Image
-                    src="/courriers.png"
+                    src='/courriers.png'
                     height={130}
                     width={165}
-                    alt="Starken o Chileexpress"
+                    alt='Starken o Chileexpress'
                   />
                 </Box>
               </Box>
             </Box>
           </Box>
-        </main>
+        </MainLayout>
       </Box>
     );
   } else

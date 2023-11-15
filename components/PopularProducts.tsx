@@ -33,6 +33,7 @@ const PopularProducts: FC<Props> = ({ products }) => {
       interval={3000}
       showStatus={false}
       autoPlay
+      showThumbs={false}
       // renderArrowNext={() => <NavigateNextIcon />}
       // renderArrowPrev={() => <NavigateBeforeIcon />}
     >

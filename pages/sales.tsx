@@ -1,11 +1,16 @@
 import { Box, Typography } from "@mui/material";
-import * as React from "react";
-
+import Head from 'next/head';
+import MainLayout from '../components/Layout/MainLayout';
 const Sales = () => {
   return (
-    <div>
-      <Typography variant="h1">Sales de bano</Typography>
-    </div>
+    <>
+      <Head>
+        <title>Sales de bano</title>
+      </Head>
+      <MainLayout>
+        <Typography variant='h1'>Sales de bano</Typography>
+      </MainLayout>
+    </>
   );
 };
 

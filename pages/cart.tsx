@@ -18,6 +18,7 @@ import { RemoveCircleOutlined, AddCircleOutlined } from "@mui/icons-material";
 // My components
 import { CartContext } from "../context";
 import theme from "../styles/theme";
+import MainLayout from '../components/Layout/MainLayout';
 // Queries & Mutations
 
 // Typescript
@@ -26,11 +27,12 @@ const Cart: FC = () => {
   const [cartTotal, setCartTotal] = useState(0);
   const { cart } = useContext(CartContext);
   const mobileLayout = useMediaQuery(mobile);
+  console.log('cart', cart);
 
   return (
-    <Box
+    <MainLayout
       sx={{
-        p: { xs: "3vh 3vw", md: "3vh 5vw" },
+        p: { xs: '3vh 3vw', md: '3vh 5vw' },
       }}
     >
       {cart.length > 0 ? (
@@ -38,47 +40,54 @@ const Cart: FC = () => {
           return (
             <Box
               key={p.id}
-              display={"flex"}
-              justifyContent="left"
+              // display={'flex'}
+              // justifyContent='left'
               sx={{
-                pt: "1.5vh",
+                display: 'flex',
+                flexDirection: 'column',
+                pt: '1.5vh',
               }}
             >
-              <Box>
-                <Image
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                <img
                   src={p.image}
                   alt={p.name}
-                  width={mobileLayout ? 133 : 400}
-                  height={mobileLayout ? 133 : 400}
+                  width='20%'
+                  height='20%'
                   style={{
-                    borderRadius: "10px",
+                    borderRadius: '10px',
                   }}
                 />
               </Box>
               <Box
                 sx={{
-                  width: "100%",
-                  pl: "3vw",
+                  width: '100%',
+                  pl: '3vw',
                 }}
               >
                 <Box>
-                  <Typography variant="body1">{p.name}</Typography>
+                  <Typography variant='body1'>{p.name}</Typography>
                 </Box>
                 <Box sx={{ flex: 1 }}></Box>
                 <Box
                   sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}
                 >
                   <Box>
-                    <Typography variant="body1">${p.price}</Typography>
+                    <Typography variant='body1'>${p.price}</Typography>
                   </Box>
                   <Box
                     sx={{
-                      display: "flex",
-                      alignItems: "center",
+                      display: 'flex',
+                      alignItems: 'center',
                     }}
                   >
                     <IconButton
@@ -94,7 +103,7 @@ const Cart: FC = () => {
                         }}
                       />
                     </IconButton>
-                    <Typography variant="caption">{p.quantity}</Typography>
+                    <Typography variant='caption'>{p.quantity}</Typography>
                     <IconButton
                       disabled={p.quantity < p.stock ? false : true}
                       onClick={() => {
@@ -116,7 +125,7 @@ const Cart: FC = () => {
         })
       ) : (
         <Box>
-          <Typography variant="h6">
+          <Typography variant='h6'>
             Aun no has agregado productos al carrito
           </Typography>
         </Box>
@@ -124,13 +133,13 @@ const Cart: FC = () => {
       {cart.length > 0 && (
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
+            display: 'flex',
+            justifyContent: 'space-between',
           }}
         >
           <Box>
-            <Typography variant="h6">
-              Total: $
+            <Typography variant='h6'>
+              Total: $ {}
               {/* {cart.map((p) => {
                 let productTotal =
                   parseInt(p.price.replace(".", "")) * p.quantity;
@@ -143,7 +152,7 @@ const Cart: FC = () => {
           </Box>
         </Box>
       )}
-    </Box>
+    </MainLayout>
   );
 };
 export default Cart;

@@ -6,11 +6,6 @@ import { FC } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { mobile } from "../styles/breakpoints";
 
-// Material Components
-
-// My components
-
-// Queries & Mutations
 
 // Typescript
 interface Props {

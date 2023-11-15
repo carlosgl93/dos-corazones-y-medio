@@ -53,7 +53,8 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           />
         )}
 
-        <CardMedia component="img" height="auto" image={images[0]} alt={name} />
+
+        <CardMedia component="img" height="auto" image={images?.length > 0 ? images[0] : 'https://via.placeholder.com/300x200.png?text=Image+Not+Available'} alt={name} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {name}

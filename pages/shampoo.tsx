@@ -1,11 +1,14 @@
-import { Box, Typography } from "@mui/material";
-import * as React from "react";
+import { Box, Typography } from '@mui/material';
+import MainLayout from '../components/Layout/MainLayout';
+import Loading from '../components/Loading';
 
 const Shampoo = () => {
   return (
-    <div>
-      <Typography variant="h2">Shampoo solido</Typography>
-    </div>
+    <MainLayout>
+      <Typography color='primary.main' variant='h2'>
+        Shampoo solido
+      </Typography>
+    </MainLayout>
   );
 };
 

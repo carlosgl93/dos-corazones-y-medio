@@ -24,6 +24,7 @@ import { userRoutes } from "../../routes";
 import { mobile, tablet, desktop } from "../../styles/breakpoints";
 import { Router, useRouter } from "next/router";
 import { CartContext } from "../../context";
+import Logo from './Logo';
 
 const styles = {
   root: {
@@ -46,14 +47,14 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
   const router = useRouter();
   const mobileLayout = useMediaQuery(mobile);
 
-  const { main, contrastText } = theme.palette.primary;
+  const { main, contrastText, text, title } = theme.palette.primary;
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
       ) {
         return;
       }
@@ -63,45 +64,42 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
   const sideList = () => (
     <Box
       sx={{
-        backgroundColor: main,
-        height: mobileLayout ? "100vh" : "auto",
+        backgroundColor: theme.palette.paper.main,
+        height: mobileLayout ? '100vh' : 'auto',
       }}
     >
       <List
         sx={{
-          display: mobileLayout ? "block" : "flex",
-          justifyContent: "space-evenly",
+          display: mobileLayout ? 'block' : 'flex',
+          justifyContent: 'space-evenly',
         }}
       >
         {userRoutes.map((r) => (
           <ListItem
             onClick={() => router.push(r.link)}
-            className="nav-link"
+            className='nav-link'
             key={r.name}
             sx={{
               // mobileLayout ? minWidth: '10'
               // minWidth: mobileLayout ? "100%" : "10vw",
               color: contrastText,
             }}
-            color="secondary"
+            color='secondary'
           >
             <NextLink href={r.link} passHref>
               <Button
                 sx={{
-                  backgroundColor: contrastText,
-                  color: main,
-                  fontSize: "0.7rem",
-                  ":hover": {
+                  backgroundColor: theme.palette.primary.main,
+                  color: contrastText,
+                  fontSize: '0.7rem',
+                  ':hover': {
                     bgcolor: theme.palette.secondary.main,
-                    color: contrastText,
+                    color: text,
                   },
                 }}
               >
                 {r.name}
               </Button>
-              {/* <Link underline="hover" sx={{ color: contrastText }}>
-                {r.name}
-              </Link> */}
             </NextLink>
           </ListItem>
         ))}
@@ -112,10 +110,10 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
   return (
     <Box>
       <AppBar
-        position="static"
+        position='static'
         sx={{
-          backgroundColor: main,
-          minHeight: "5vh",
+          backgroundColor: theme.palette.paper.main,
+          minHeight: '5vh',
         }}
       >
         {mobileLayout ? (
@@ -123,26 +121,26 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
           <Toolbar>
             <Box>
               <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="menu"
+                edge='start'
+                color='inherit'
+                aria-label='menu'
                 onClick={toggleDrawer(true)}
               >
                 <MenuIcon style={{ color: contrastText }} />
               </IconButton>
             </Box>
-            <Box sx={{ display: "flex", flex: 1, justifyContent: "center" }}>
-              <NextLink href="/" passHref>
-                <Typography variant="h6" color={contrastText}>
+            <Box sx={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+              <NextLink href='/' passHref>
+                <Typography variant='h6' color={contrastText}>
                   Dos corazones y medio
                 </Typography>
               </NextLink>
             </Box>
 
             <Box>
-              <NextLink href="/cart" passHref>
+              <NextLink href='/cart' passHref>
                 <IconButton sx={{ color: contrastText }}>
-                  <Badge badgeContent={cart.length} color="secondary" sx={{}}>
+                  <Badge badgeContent={cart.length} color='secondary' sx={{}}>
                     <ShoppingCartOutlinedIcon />
                   </Badge>
                 </IconButton>
@@ -153,56 +151,58 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
           // DESKTOP
           <Box
             sx={{
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
             <Box
-              className="nav-link"
+              className='nav-link'
               sx={{
-                padding: "0vh 2.5vw",
+                padding: '0vh 2.5vw',
                 flex: 1,
               }}
             >
               <NextLink
-                href="/"
+                href='/'
                 style={{
                   color: contrastText,
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
                 passHref
               >
                 <IconButton>
-                  <HomeIcon
-                    sx={{
-                      color: contrastText,
-                    }}
-                  />
+                  <Logo />
                 </IconButton>
-                <Typography variant="h6">2 Corazones y Medio</Typography>
               </NextLink>
             </Box>
-            <Box style={{ display: "flex" }}>{sideList()}</Box>
+            <Box
+              style={{
+                display: 'flex',
+                backgroundColor: theme.palette.paper.main,
+              }}
+            >
+              {sideList()}
+            </Box>
             <Box
               sx={{
                 flex: 1,
-                justifyContent: "end",
+                justifyContent: 'end',
                 color: main,
               }}
             >
               <ListItem
                 sx={{
-                  justifyContent: "end",
-                  ":hover": {
+                  justifyContent: 'end',
+                  ':hover': {
                     bgColor: theme.palette.secondary.main,
                     color: contrastText,
                   },
                 }}
               >
-                <NextLink href="/cart" passHref>
+                <NextLink href='/cart' passHref>
                   <IconButton sx={{ color: contrastText }}>
-                    <Badge badgeContent={cart.length} color="secondary" sx={{}}>
+                    <Badge badgeContent={cart.length} color='secondary' sx={{}}>
                       <ShoppingCartOutlinedIcon />
                     </Badge>
                   </IconButton>
@@ -213,15 +213,25 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
         )}
       </AppBar>
       <Drawer open={state.left} onClose={toggleDrawer(false)}>
+        <Box
+          display='flex'
+          sx={{
+            justifyContent: 'center',
+          }}
+        >
+          <Logo />
+        </Box>
+
         {sideList()}
       </Drawer>
       <Box
-        component="main"
+        component='main'
         sx={{
-          minHeight: "90vh",
-          maxWidth: "100vw",
-          overflow: "hidden",
-          scrollbarWidth: "none",
+          minHeight: '85vh',
+          maxWidth: '100vw',
+          overflow: 'hidden',
+          scrollbarWidth: 'none',
+          
         }}
       >
         {children}
@@ -229,17 +239,19 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
 
       <BottomNavigation
         sx={{
-          display: "flex",
+          display: 'flex',
           flex: 1,
-          backgroundColor: main,
-          justifyContent: "center",
-          minHeight: "5vh",
+          backgroundColor: theme.palette.paper.main,
+          justifyContent: 'center',
+          minHeight: '5vh',
           color: contrastText,
-          alignItems: "center",
+          alignItems: 'center',
           // alignContent: "center",
         }}
       >
-        <Typography variant="h6">Rancagua, 2023</Typography>
+        <Typography variant='h6' color='primary.contrastText'>
+          Rancagua, 2023
+        </Typography>
       </BottomNavigation>
     </Box>
   );
