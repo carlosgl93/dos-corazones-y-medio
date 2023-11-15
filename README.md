@@ -1,17 +1,20 @@
-Nextjs with firebase
+# DOS CORAZONES Y MEDIO 
+
+## Nextjs with firebase
 
 firebase project: leveraged-tech
 We are using auth and firestore from firebase.
 
 Vercel: Hosting and cloud functions (api folder)
 
-ENV VARIABLES:
+### ENV VARIABLES
 
+copy localTemplate.env to .env.local and
 Get the firestore environment variables from leveraged-tech project.
 apiKey: "",
-authDomain: "leveraged-tech.firebaseapp.com",
-projectId: "leveraged-tech",
-storageBucket: "leveraged-tech.appspot.com",
+authDomain: "",
+projectId: "",
+storageBucket: "",
 messagingSenderId: "",
 appId: "",
 measurementId: ""
