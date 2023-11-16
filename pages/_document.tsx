@@ -14,7 +14,6 @@ export default function Document() {
           href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
           rel='stylesheet'
         />
-        <meta charset='UTF-8' />
         <meta
           name='description'
           content='Productos naturales para el cuidado de tu piel. Hechos con amor.'

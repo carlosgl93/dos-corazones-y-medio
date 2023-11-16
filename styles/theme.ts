@@ -7,20 +7,13 @@ const theme = createTheme({
     },
   },
   palette: {
-    paper: {
-      main: '#E0F2F1',
-    },
     primary: {
       main: '#26A69A',
-      text: '#2B4162',
-      title: '#C49799',
+      light: '#E0F2F1',
       contrastText: '#FFB140',
     },
     secondary: {
       main: '#3C909D',
-    },
-    accent: {
-      main: '#80CBC4',
     },
   },
   components: {

@@ -18,3 +18,8 @@ storageBucket: "",
 messagingSenderId: "",
 appId: "",
 measurementId: ""
+
+#### TODOS
+
+- Create products state
+- load all products to the product state

@@ -22,7 +22,7 @@ const CartProvider: FC = ({ children }) => {
 
     // if product already in cart then update quantity
     if (productInCartAlready) {
-      dispatch({ type: 'Update quantity', payload: product });
+      dispatch({ type: 'Update Quantity', payload: product });
     } else {
       dispatch({ type: 'Add to cart', payload: product });
     }

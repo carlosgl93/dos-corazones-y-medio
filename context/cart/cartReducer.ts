@@ -9,15 +9,14 @@ type CartActionType =
     }
   | {
       type: 'Load cart from cookies | storage';
-      payload: Product;
+      payload: CartProduct[];
     }
   | {
       type: 'Update Quantity';
-      payload: Product;
+      payload: CartProduct;
     }
   | {
       type: 'Update cart total';
-      payload: number;
     };
 
 export const cartReducer = (
@@ -25,23 +24,22 @@ export const cartReducer = (
   action: CartActionType
 ): CartState => {
   const { cart } = state;
-  const { payload } = action;
   switch (action.type) {
     case 'Add to cart':
-      return { ...state, cart: [...cart, payload] };
+      return { ...state, cart: [...cart, action.payload] };
     case 'Update Quantity':
       return {
         ...state,
         cart: cart.map((product) =>
-          product.id === payload.id
-            ? { ...product, quantity: payload.quantity }
+          product.id === action.payload.id
+            ? { ...product, quantity: action.payload.quantity }
             : product
         ),
       };
     case 'Update cart total':
       let newTotal = 0;
       cart.forEach((product) => {
-        newTotal += product.price * product.quantity;
+        newTotal += Number(product.price) * Number(product.quantity);
       });
       return { ...state, cartTotal: newTotal };
     default:

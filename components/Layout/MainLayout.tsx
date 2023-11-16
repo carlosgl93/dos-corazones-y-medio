@@ -1,5 +1,5 @@
-import * as React from "react";
-import NextLink from "next/link";
+import React from 'react';
+import NextLink from 'next/link';
 
 import {
   AppBar,
@@ -16,14 +16,14 @@ import {
   Badge,
   Link,
   Button,
-} from "@mui/material";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MenuIcon from "@mui/icons-material/Menu";
-import HomeIcon from "@mui/icons-material/Home";
-import { userRoutes } from "../../routes";
-import { mobile, tablet, desktop } from "../../styles/breakpoints";
-import { Router, useRouter } from "next/router";
-import { CartContext } from "../../context";
+} from '@mui/material';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
+import { userRoutes } from '../../routes';
+import { mobile, tablet, desktop } from '../../styles/breakpoints';
+import { Router, useRouter } from 'next/router';
+import { CartContext } from '../../context';
 import Logo from './Logo';
 
 const styles = {
@@ -31,6 +31,9 @@ const styles = {
     flexGrow: 1,
   },
 };
+
+const text = '#2B4162';
+const title = '#C49799';
 
 interface Props {
   children: React.ReactNode;
@@ -47,7 +50,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
   const router = useRouter();
   const mobileLayout = useMediaQuery(mobile);
 
-  const { main, contrastText, text, title } = theme.palette.primary;
+  const { main, contrastText } = theme.palette.primary;
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -64,7 +67,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
   const sideList = () => (
     <Box
       sx={{
-        backgroundColor: theme.palette.paper.main,
+        backgroundColor: theme.palette.primary.light,
         height: mobileLayout ? '100vh' : 'auto',
       }}
     >
@@ -112,7 +115,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
       <AppBar
         position='static'
         sx={{
-          backgroundColor: theme.palette.paper.main,
+          backgroundColor: theme.palette.primary.light,
           minHeight: '5vh',
         }}
       >
@@ -179,7 +182,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
             <Box
               style={{
                 display: 'flex',
-                backgroundColor: theme.palette.paper.main,
+                backgroundColor: theme.palette.primary.light,
               }}
             >
               {sideList()}
@@ -231,7 +234,6 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
           maxWidth: '100vw',
           overflow: 'hidden',
           scrollbarWidth: 'none',
-          
         }}
       >
         {children}
@@ -241,7 +243,7 @@ const MainLayout: React.FunctionComponent<Props> = ({ children }) => {
         sx={{
           display: 'flex',
           flex: 1,
-          backgroundColor: theme.palette.paper.main,
+          backgroundColor: theme.palette.primary.light,
           justifyContent: 'center',
           minHeight: '5vh',
           color: contrastText,

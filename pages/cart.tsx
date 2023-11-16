@@ -30,11 +30,7 @@ const Cart: FC = () => {
   console.log('cart', cart);
 
   return (
-    <MainLayout
-      sx={{
-        p: { xs: '3vh 3vw', md: '3vh 5vw' },
-      }}
-    >
+    <MainLayout>
       {cart.length > 0 ? (
         cart.map((p) => {
           return (
