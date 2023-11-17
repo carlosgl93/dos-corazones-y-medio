@@ -1,6 +1,5 @@
 import * as React from "react";
-import Head from "next/head";
-import MainLayout from '../components/Layout/MainLayout';
+import Head from 'next/head';
 import { Box, Typography } from "@mui/material";
 
 const Cuerpo = () => {
@@ -9,9 +8,7 @@ const Cuerpo = () => {
       <Head>
         <title>Cuerpo y rostro</title>
       </Head>
-      <MainLayout>
-        <Typography variant='h1'>Cuerpo y rostro </Typography>
-      </MainLayout>
+      <Typography variant='h1'>Cuerpo y rostro </Typography>
     </>
   );
 };

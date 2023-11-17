@@ -34,8 +34,8 @@ const PopularProducts: FC<Props> = ({ products }) => {
       showStatus={false}
       autoPlay
       showThumbs={false}
-      // renderArrowNext={() => <NavigateNextIcon />}
-      // renderArrowPrev={() => <NavigateBeforeIcon />}
+      // do not display bottom
+      showIndicators={false}
     >
       {products.map((p) => {
         return <ProductCard product={p} key={p.name} />;

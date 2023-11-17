@@ -7,9 +7,7 @@ const Sales = () => {
       <Head>
         <title>Sales de bano</title>
       </Head>
-      <MainLayout>
-        <Typography variant='h1'>Sales de bano</Typography>
-      </MainLayout>
+      <Typography variant='h1'>Sales de bano</Typography>
     </>
   );
 };

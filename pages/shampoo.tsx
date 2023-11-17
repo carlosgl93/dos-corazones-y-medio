@@ -4,11 +4,9 @@ import Loading from '../components/Loading';
 
 const Shampoo = () => {
   return (
-    <MainLayout>
-      <Typography color='primary.main' variant='h2'>
-        Shampoo solido
-      </Typography>
-    </MainLayout>
+    <Typography color='primary.main' variant='h2'>
+      Shampoo solido
+    </Typography>
   );
 };
 

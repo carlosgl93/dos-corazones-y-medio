@@ -2,16 +2,16 @@
 import { FC, useEffect, useState } from "react";
 
 // Material Components
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Box, Divider,  Stack, Typography } from "@mui/material";
 
 // My components
 import ProductCard from "./ProductCard";
+import Loading from "./Loading";
 
 // Queries & Mutations
 
 // Typescript
 import { Product } from "../interfaces/Product";
-import Loading from "./Loading";
 
 interface Props {
   products: Product[];
@@ -23,6 +23,7 @@ const ProductsGrid: FC<Props> = ({ products }) => {
   const [cuerpo, setCuerpo] = useState<Product[] | []>([]);
 
   // REMOVE ONCE BACKEND IS IMPLEMENTED AND PRODUCTS WILL BE FETCHED FROM DB!
+  console.log(products);
   useEffect(() => {
     products.map((product) => {
       switch (product.category) {
@@ -59,28 +60,28 @@ const ProductsGrid: FC<Props> = ({ products }) => {
   return (
     <Box
       sx={{
-        paddingX: { xs: "2vw", md: "5vw" },
-        marginBottom: "10vh",
+        paddingX: { xs: '2vw', md: '5vw' },
+        marginBottom: '10vh',
       }}
     >
       {shampoo.length > 0 ? (
         <Box>
           <Box
             sx={{
-              display: "flex",
-              justifyContent: { xs: "center", md: "start" },
-              paddingLeft: { xs: 0, md: "5vw" },
+              display: 'flex',
+              justifyContent: { xs: 'center', md: 'start' },
+              paddingLeft: { xs: 0, md: '5vw' },
             }}
           >
-            <Typography variant="h6" color="primary" fontWeight="bold">
+            <Typography variant='h6' color='primary' fontWeight='bold'>
               Shampoo
             </Typography>
           </Box>
 
           {/* shampoo */}
           <Stack
-            direction={{ xs: "column", md: "row" }}
-            spacing={{ xs: 0, md: 1 }}
+            direction={{ xs: 'column', md: 'row' }}
+            spacing={{ xs: 2, sm: 4, md: 6, lg: 8 }}
           >
             {shampoo.map((shampooProduct) => (
               <ProductCard key={shampooProduct.id} product={shampooProduct} />
@@ -94,23 +95,23 @@ const ProductsGrid: FC<Props> = ({ products }) => {
       {crema.length > 0 ? (
         <Box
           sx={{
-            marginTop: { xs: "2vh" },
+            marginTop: { xs: '2vh' },
           }}
         >
           <Box
             sx={{
-              display: "flex",
-              justifyContent: { xs: "center", md: "start" },
-              paddingLeft: { xs: 0, md: "5vw" },
+              display: 'flex',
+              justifyContent: { xs: 'center', md: 'start' },
+              paddingLeft: { xs: 0, md: '5vw' },
             }}
           >
-            <Typography variant="h6" color="primary" fontWeight="bold">
+            <Typography variant='h6' color='primary' fontWeight='bold'>
               Cremas
             </Typography>
           </Box>
 
           {/* cremas */}
-          <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
+          <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
             {crema.map((cremaProduct) => (
               <ProductCard key={cremaProduct.id} product={cremaProduct} />
             ))}
@@ -123,20 +124,20 @@ const ProductsGrid: FC<Props> = ({ products }) => {
         <Box>
           <Box
             sx={{
-              display: "flex",
-              justifyContent: { xs: "center", md: "start" },
-              paddingLeft: { xs: 0, md: "5vw" },
+              display: 'flex',
+              justifyContent: { xs: 'center', md: 'start' },
+              paddingLeft: { xs: 0, md: '5vw' },
             }}
           >
-            <Typography variant="h6" color="primary" fontWeight="bold">
+            <Typography variant='h6' color='primary' fontWeight='bold'>
               Sales
             </Typography>
           </Box>
           {/* sales */}
           <Stack
-            direction={{ xs: "column", md: "row" }}
+            direction={{ xs: 'column', md: 'row' }}
             spacing={2}
-            divider={<Divider orientation="vertical" flexItem />}
+            divider={<Divider orientation='vertical' flexItem />}
           >
             {sales.map((salesProduct) => (
               <ProductCard key={salesProduct.id} product={salesProduct} />
@@ -150,21 +151,21 @@ const ProductsGrid: FC<Props> = ({ products }) => {
         <Box>
           <Box
             sx={{
-              display: "flex",
-              justifyContent: { xs: "center", md: "start" },
-              paddingLeft: { xs: 0, md: "5vw" },
+              display: 'flex',
+              justifyContent: { xs: 'center', md: 'start' },
+              paddingLeft: { xs: 0, md: '5vw' },
             }}
           >
-            <Typography variant="h6" color="primary" fontWeight="bold">
+            <Typography variant='h6' color='primary' fontWeight='bold'>
               Cuerpo y Rostro
             </Typography>
           </Box>
 
           {/* cuerpo y rostros */}
           <Stack
-            direction={{ xs: "column", md: "row" }}
+            direction={{ xs: 'column', md: 'row' }}
             spacing={2}
-            divider={<Divider orientation="vertical" flexItem />}
+            divider={<Divider orientation='vertical' flexItem />}
           >
             {cuerpo.map((cuerpoProduct) => (
               <ProductCard key={cuerpoProduct.id} product={cuerpoProduct} />

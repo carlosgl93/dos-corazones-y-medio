@@ -1,13 +1,8 @@
 import * as React from "react";
-import { Box, Typography } from "@mui/material";
-import MainLayout from '../components/Layout/MainLayout';
+import { Box, Typography } from '@mui/material';
 
 const Crema = () => {
-  return (
-    <MainLayout>
-      <Typography variant='h1'>Cremas</Typography>
-    </MainLayout>
-  );
+  return <Typography variant='h1'>Cremas</Typography>;
 };
 
 export default Crema;

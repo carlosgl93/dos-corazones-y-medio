@@ -30,7 +30,7 @@ const Cart: FC = () => {
   console.log('cart', cart);
 
   return (
-    <MainLayout>
+    <>
       {cart.length > 0 ? (
         cart.map((p) => {
           return (
@@ -148,7 +148,7 @@ const Cart: FC = () => {
           </Box>
         </Box>
       )}
-    </MainLayout>
+    </>
   );
 };
 export default Cart;

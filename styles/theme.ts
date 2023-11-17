@@ -14,6 +14,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#3C909D',
+      contrastText: '#2B4162',
     },
   },
   components: {
@@ -37,6 +38,9 @@ const theme = createTheme({
       },
       styleOverrides: {
         contained: true,
+        root: {
+          fontWeight: 'bold',
+        },
       },
     },
     MuiIcon: {

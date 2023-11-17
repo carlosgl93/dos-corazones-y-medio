@@ -44,14 +44,14 @@ const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
   const router = useRouter();
   const mobileLayout = useMediaQuery(mobile);
 
-  const { main, contrastText } = theme.palette.primary;
+  const { main, contrastText, light } = theme.palette.primary;
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
       ) {
         return;
       }
@@ -61,35 +61,35 @@ const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
   const sideList = () => (
     <Box
       sx={{
-        backgroundColor: main,
-        height: mobileLayout ? "100vh" : "auto",
+        backgroundColor: theme.palette.primary.light,
+        height: mobileLayout ? '100vh' : 'auto',
       }}
     >
       <List
         sx={{
-          display: mobileLayout ? "block" : "flex",
-          justifyContent: "space-evenly",
+          display: mobileLayout ? 'block' : 'flex',
+          justifyContent: 'space-evenly',
         }}
       >
         {adminRoutes.map((r) => (
           <ListItem
             onClick={() => router.push(r.link)}
-            className="nav-link"
+            className='nav-link'
             key={r.name}
             sx={{
               // mobileLayout ? minWidth: '10'
               // minWidth: mobileLayout ? "100%" : "10vw",
               color: contrastText,
             }}
-            color="secondary"
+            color='secondary'
           >
             <NextLink href={r.link} passHref>
               <Button
                 sx={{
                   backgroundColor: contrastText,
                   color: main,
-                  fontSize: "0.7rem",
-                  ":hover": {
+                  fontSize: '0.7rem',
+                  ':hover': {
                     bgcolor: theme.palette.secondary.main,
                     color: contrastText,
                   },
@@ -110,10 +110,10 @@ const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
   return (
     <Box>
       <AppBar
-        position="static"
+        position='static'
         sx={{
-          backgroundColor: main,
-          minHeight: "5vh",
+          backgroundColor: theme.palette.primary.light,
+          minHeight: '5vh',
         }}
       >
         {mobileLayout ? (
@@ -121,17 +121,17 @@ const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
           <Toolbar>
             <Box>
               <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="menu"
+                edge='start'
+                color='inherit'
+                aria-label='menu'
                 onClick={toggleDrawer(true)}
               >
                 <MenuIcon style={{ color: contrastText }} />
               </IconButton>
             </Box>
-            <Box sx={{ display: "flex", flex: 1, justifyContent: "center" }}>
-              <NextLink href="/admin" passHref>
-                <Typography variant="h6" color={contrastText}>
+            <Box sx={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+              <NextLink href='/admin' passHref>
+                <Typography variant='h6' color={contrastText}>
                   Administración
                 </Typography>
               </NextLink>
@@ -147,23 +147,23 @@ const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
           // DESKTOP
           <Box
             sx={{
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
             <Box
-              className="nav-link"
+              className='nav-link'
               sx={{
-                padding: "0vh 2.5vw",
+                padding: '0vh 2.5vw',
                 flex: 1,
               }}
             >
               <NextLink
-                href="/admin"
+                href='/admin'
                 style={{
                   color: contrastText,
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
                 passHref
               >
@@ -174,21 +174,21 @@ const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
                     }}
                   />
                 </IconButton>
-                <Typography variant="h6">Administración</Typography>
+                <Typography variant='h6'>Administración</Typography>
               </NextLink>
             </Box>
-            <Box style={{ display: "flex" }}>{sideList()}</Box>
+            <Box style={{ display: 'flex' }}>{sideList()}</Box>
             <Box
               sx={{
                 flex: 1,
-                justifyContent: "end",
+                justifyContent: 'end',
                 color: main,
               }}
             >
               <ListItem
                 sx={{
-                  justifyContent: "end",
-                  ":hover": {
+                  justifyContent: 'end',
+                  ':hover': {
                     bgColor: theme.palette.secondary.main,
                     color: contrastText,
                   },
@@ -197,15 +197,15 @@ const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
                 <Button
                   sx={{
                     color: contrastText,
-                    ":hover": {
+                    ':hover': {
                       bgColor: contrastText,
-                      color: main,
+                      color: 'white',
                     },
                   }}
-                  onClick={() => router.push("/products/add")}
+                  onClick={() => router.push('/products/add')}
                   endIcon={<AddCircleOutlineIcon />}
                 >
-                  <Typography>Agregar producto</Typography>
+                  Agregar producto
                 </Button>
               </ListItem>
             </Box>
@@ -216,12 +216,12 @@ const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
         {sideList()}
       </Drawer>
       <Box
-        component="main"
+        component='main'
         sx={{
-          minHeight: "90vh",
-          maxWidth: "100vw",
-          overflow: "hidden",
-          scrollbarWidth: "none",
+          minHeight: '90vh',
+          maxWidth: '100vw',
+          overflow: 'hidden',
+          scrollbarWidth: 'none',
         }}
       >
         {children}
@@ -229,17 +229,17 @@ const AdminLayout: React.FunctionComponent<Props> = ({ children }) => {
 
       <BottomNavigation
         sx={{
-          display: "flex",
+          display: 'flex',
           flex: 1,
-          backgroundColor: main,
-          justifyContent: "center",
-          minHeight: "5vh",
+          backgroundColor: light,
+          justifyContent: 'center',
+          minHeight: '5vh',
           color: contrastText,
-          alignItems: "center",
+          alignItems: 'center',
           // alignContent: "center",
         }}
       >
-        <Typography variant="h6">Rancagua, 2023</Typography>
+        <Typography variant='h6'>Rancagua, 2023</Typography>
       </BottomNavigation>
     </Box>
   );

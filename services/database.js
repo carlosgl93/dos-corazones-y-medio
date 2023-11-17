@@ -1,5 +1,5 @@
 import { db, storage } from "../firebase";
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 import {
   collection,
@@ -9,45 +9,37 @@ import {
   updateDoc,
   deleteDoc,
   doc,
-} from "firebase/firestore";
+} from 'firebase/firestore';
 
-const productsCollectionRef = collection(db, "ange-shop");
+const productsCollectionRef = collection(db, 'ange-shop');
 
 class ProductDataService {
   taskPercent = 0;
 
-  storageUrl = "/ange-shop/products/";
+  storageUrl = '/ange-shop/products/';
 
   addProduct = async (newProduct) => {
     const images = newProduct.images;
     console.log(images);
+    let uploadedImagesPaths = [];
     for (const file of images) {
       try {
-        console.log("beggining upload", file);
+        console.log('beggining upload', file);
         const storageRef = ref(storage, `${this.storageUrl}${file.name}`);
-        uploadBytes(storageRef, file).then(alert("images uploaded"));
-        console.log("upload done");
+        const uploadedImage = await uploadBytes(storageRef, file);
+        const downloadURL = await getDownloadURL(uploadedImage.ref);
+        uploadedImagesPaths = [...uploadedImagesPaths, downloadURL];
+        console.log('upload done');
       } catch (error) {
         alert(`hubo un error ${error.message}`);
       }
-
-      // uploadTask.on(
-      //   "state_changed",
-      //   (snapshot) => {
-      //     const percent = Math.round(
-      //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-      //     );
-
-      //     this.taskPercent = percent;
-      //   },
-      //   (onerror) => console.log("hubo un error subiendo las imagenes"),
-      //   () => console.log("imagenes subidas correctamente")
-      // );
     }
+    newProduct.images = uploadedImagesPaths;
 
     const productToFirestore = newProduct;
-    delete productToFirestore.images;
-    return addDoc(productsCollectionRef, productToFirestore);
+    console.log(productToFirestore);
+
+    return await addDoc(productsCollectionRef, productToFirestore);
   };
 
   updateProduct = (id, updatedProduct) => {

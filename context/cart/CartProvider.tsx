@@ -33,8 +33,6 @@ const CartProvider: FC = ({ children }) => {
     dispatch({ type: 'Update cart total' });
   }, [state.cart.length]);
 
-  console.log('cart length', state.cart.length);
-  console.log('cart total', state.cartTotal);
 
   return (
     <CartContext.Provider

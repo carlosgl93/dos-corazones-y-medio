@@ -11,10 +11,6 @@ import AdminLayout from "../components/Layout/AdminLayout";
 // Typescript
 interface Props {}
 const Backoffice: FC<Props> = ({}) => {
-  return (
-    <AdminLayout>
-      <>asfd</>
-    </AdminLayout>
-  );
+  return <>asfd</>;
 };
 export default Backoffice;

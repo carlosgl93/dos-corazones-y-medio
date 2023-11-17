@@ -1,10 +1,9 @@
-import { useState } from "react";
-import NextLink from "next";
+import { useState } from 'react';
 
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 import {
   Button,
   CardActionArea,
@@ -12,12 +11,10 @@ import {
   Chip,
   useMediaQuery,
   useTheme,
-} from "@mui/material";
-import { Product } from "../interfaces/Product";
-import { mobile } from "../styles/breakpoints";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { useRouter } from "next/router";
+} from '@mui/material';
+import { Product } from '../interfaces/Product';
+import { mobile } from '../styles/breakpoints';
+import { useRouter } from 'next/router';
 
 interface Props {
   product: Product;
@@ -34,37 +31,45 @@ const ProductCard: React.FC<Props> = ({ product }) => {
     <Card
       onClick={() => router.push(`/products/${id}`)}
       sx={{
-        maxWidth: mobileLayout ? "auto" : "30vw",
-        marginX: mobileLayout ? "5vw" : "auto",
+        maxWidth: mobileLayout ? 'auto' : '30vw',
+        marginX: mobileLayout ? '5vw' : 'auto',
       }}
     >
       <CardActionArea>
         {stock === 0 && (
           <Chip
-            color="primary"
-            label="No hay stock disponible"
+            color='primary'
+            label='No hay stock disponible'
             sx={{
-              position: "absolute",
+              position: 'absolute',
               zIndex: 99,
-              top: "10px",
-              left: "10px",
-              color: "white",
+              top: '10px',
+              left: '10px',
+              color: 'white',
             }}
           />
         )}
 
-
-        <CardMedia component="img" height="auto" image={images?.length > 0 ? images[0] : 'https://via.placeholder.com/300x200.png?text=Image+Not+Available'} alt={name} />
+        <CardMedia
+          component='img'
+          height='auto'
+          image={
+            images?.length > 0
+              ? images[0]
+              : 'https://via.placeholder.com/300x200.png?text=Image+Not+Available'
+          }
+          alt={name}
+        />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant='h5' component='div'>
             {name}
           </Typography>
           {description && (
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant='body2' color='text.secondary'>
               {description}
             </Typography>
           )}
-          <Typography component="h5">$ {price}</Typography>
+          <Typography component='h5'>$ {price}</Typography>
         </CardContent>
       </CardActionArea>
     </Card>
